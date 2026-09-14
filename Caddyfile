@@ -1,0 +1,9 @@
+www.integritas.net.br {
+    handle /spl* {
+        reverse_proxy spl-landing-production.up.railway.app
+    }
+
+    handle {
+        reverse_proxy integritas-landing-production.up.railway.app
+    }
+}
