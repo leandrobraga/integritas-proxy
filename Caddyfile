@@ -3,11 +3,18 @@
 }
 
 :80 {
-    handle /spl* {
-        reverse_proxy https://spl-landing-production.up.railway.app
+    @spl path /spl
+    redir @spl /spl/
+
+    handle_path /spl/* {
+        reverse_proxy https://spl-landing-production.up.railway.app {
+            header_up Host spl-landing-production.up.railway.app
+        }
     }
 
     handle {
-        reverse_proxy https://integritas-landing-production.up.railway.app
+        reverse_proxy https://integritas-landing-production.up.railway.app {
+            header_up Host integritas-landing-production.up.railway.app
+        }
     }
 }
